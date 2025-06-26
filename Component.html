@@ -1,0 +1,28 @@
+
+<h2>Employee Hours Table</h2>
+<table border="1" cellspacing="0" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total Hours Worked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employees" 
+        [ngStyle]="{'background-color': emp.hoursWorked < 100 ? '#ffcccc' : 'white'}">
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.hoursWorked }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Employee Work Share (Pie Chart)</h2>
+<div style="width: 400px; height: 400px;">
+  <canvas baseChart
+    [data]="{
+      labels: chartLabels,
+      datasets: [{ data: chartData, label: 'Work %' }]
+    }"
+    [type]="'pie'">
+  </canvas>
+</div>
